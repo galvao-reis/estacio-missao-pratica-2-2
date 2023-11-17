@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordenando Valores</title>
+    <script defer src="ordenando.js"></script>
+    <link rel="stylesheet" href="ordenando.css">
+</head>
+<body>
+    <h1>Ordenando Valores</h1>
+    <div class="container">
+        <div class="section">
+            <label for="valor">Valor</label>
+            <input type="number" id="valor">
+            <button type="button" onclick="add()">Adicionar</button>
+        </div>
+        <hr>
+            <div class="sorter section">
+            <select name="sort_type" id="sorter">
+                <option value="Bubble Sort" selected>Bubble Sort</option> 
+                <option value="Selection Sort">Selection Sort</option>     
+                <option value="Quick Sort">Quick Sort</option>             
+            </select>
+            <div>
+                <button type="button" onclick="ordenar()">Ordenar</button>
+                <button type="button" onclick="misturar()">Misturar</button>
+            </div>
+            </div>
+        <hr>
+        <ul id="valores">
+
+        </ul>
+    </div>
+    
+    <script>
+        function add(){
+
+            const valor = document.getElementById("valor");
+            const lista = document.getElementById("valores");
+
+            let node = document.createElement("li");
+            let texto = document.createTextNode(valor.value)
+
+            node.appendChild(texto);
+            lista.appendChild(node);
+        }
+
+        function ordenar(){
+            const lista = document.getElementById("valores");
+            const selecao = document.getElementById("sorter");
+
+            let vetorDeValores = [];
+
+            for (let i=0; i<lista.children.length; i++){
+                let val = lista.children[i].innerHTML;
+                vetorDeValores.push(eval(val));
+            }
+            const indexAlgoritmo = selecao.selectedIndex;
+
+
+            switch (indexAlgoritmo){
+                case 0:
+                    bubble_sort(vetorDeValores);
+                    break;
+                case 1:
+                    selection_sort(vetorDeValores);
+                    break;
+                case 2:
+                    quick_sort(vetorDeValores,0,vetorDeValores.length -1);
+                    break;
+            }
+            
+
+
+            vetorDeValores.map((valor,indice)=>{
+                lista.children[indice].innerHTML = valor;
+                // usar reduce aonde nessa jossa? 
+            })
+
+        }
+        function misturar(){
+            const lista = document.getElementById("valores");
+
+            let vetorDeValores = [];
+
+            for (let i=0; i<lista.children.length; i++){
+                let val = lista.children[i].innerHTML;
+                vetorDeValores.push(eval(val));
+            }
+
+            shuffle(vetorDeValores,Math.floor(Math.random()*100));
+
+            vetorDeValores.map((valor,indice)=>{
+                lista.children[indice].innerHTML = valor;
+                // usar reduce aonde nessa jossa? 
+            })
+
+        }
+    </script>
+</body>
+</html>

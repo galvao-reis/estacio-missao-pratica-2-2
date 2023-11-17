@@ -1,0 +1,51 @@
+body{
+    width: 50%;
+    margin-inline: auto;
+
+}
+
+.section{
+    display: flex;
+    flex-direction: column;
+}
+
+select{
+    background-color: white;
+    padding: .5em;
+    border-radius: .5em;
+    border-color: #eee;
+    box-shadow: none;
+    outline: none;
+
+}
+
+button{
+    width: 6em;
+    padding: 0.5em;
+    margin: 0.5em 0;
+    border-color: transparent;
+    border-radius: .5em;
+    background-color: #0D6EFD;
+    color: white;
+}
+
+hr{
+
+    border-color: #eee;
+}
+
+
+/* Straight from the internet */
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
